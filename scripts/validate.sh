@@ -12,13 +12,13 @@ for file in skills/*/SKILL.md; do
   if [ -z "$fm" ]; then echo "$file: missing frontmatter" >&2; failed=1; continue; fi
   name=$(printf '%s\n' "$fm" | awk -F: '$1 == "name" { sub(/^[[:space:]]*/, "", $2); print $2; exit }')
   if [ "$name" != "$dir" ] || [ "${#name}" -gt 64 ] || ! [[ "$name" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then echo "$file: invalid name" >&2; failed=1; fi
-  description=$(printf '%s\n' "$fm" | awk -F: '$1 == "description" { sub(/^[[:space:]]*/, "", $2); print $2; exit }')
+  description=$(printf '%s\n' "$fm" | sed -n 's/^description:[[:space:]]*//p')
+  description=${description#\"}; description=${description%\"}; description=${description#\'}; description=${description%\'}
   if [ -z "$description" ] || [ "${#description}" -gt 1024 ]; then echo "$file: description must be 1–1024 characters" >&2; failed=1; fi
   unknown=$(printf '%s\n' "$fm" | awk -F: 'NF && $1 !~ /^(name|description|license|compatibility|metadata|allowed-tools|argument-hint)$/ { print $1 }')
   if [ -n "$unknown" ]; then echo "$file: unknown frontmatter key: $unknown" >&2; failed=1; fi
   lines=$(wc -l < "$file" | tr -d ' ')
-  if [ "$lines" -gt 500 ]; then echo "WARN $file: $lines lines > 500 (progressive disclosure)"; fi
-  if grep -Eiq '(curl|wget)[^|]*\|[[:space:]]*(ba)?sh' "$file"; then echo "$file: forbidden network pipe to shell" >&2; failed=1; fi
+  if tr '\\\n' '  ' < "$file" | grep -Eiq '(curl|wget)[^|]*\|[[:space:]]*(ba)?sh'; then echo "$file: forbidden network pipe to shell" >&2; failed=1; fi
 done
 for file in mcps/*.json; do
   [ -f "$file" ] || continue

@@ -20,9 +20,6 @@ No MCP templates are currently distributed. The upstream Sonar plugin is not red
 
 ## Contributions
 
-- A **skill** needs agent judgment and is triggered by a task.
-- Always-true repo facts belong in that repo's `AGENTS.md` or `docs/`.
-- Unattended fixed-input commands belong in that repo's `scripts/`.
-- An MCP server whose binary lives in a repo stays in that repo. For example, StudyU's `tools/studyu_mcp` is not moved here.
+Keep the boundary clear: a skill needs agent judgment and is triggered by a task. Always-true repo facts belong in that repo's `AGENTS.md` or `docs/`; unattended fixed-input commands belong in its `scripts/`. An MCP server whose binary lives in a repo stays there. For example, StudyU's `tools/studyu_mcp` is not moved here.
 
-Keep each skill's frontmatter limited to `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`, and `argument-hint`. The name must match the directory and use lowercase letters, digits, and single hyphen separators. Keep `description` between 1 and 1024 characters. Keep `SKILL.md` bodies under 500 lines; put detail in `references/*.md` one level deep and name each file in the body as “read `references/x.md` when …”. Never include secrets. Pin MCP package versions (`pkg@x.y.z`). Third-party skills require a `THIRD_PARTY/<source>/{LICENSE,SOURCE}` record.
+Keep each skill's frontmatter limited to `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`, and `argument-hint`. The name must match the directory and use lowercase letters, digits, and single hyphen separators. Keep `description` between 1 and 1024 characters. Keep `SKILL.md` bodies under 500 lines; put detail in `references/*.md` one level deep and name each file in the body as “read `references/x.md` when …”. Never include secrets. Pin MCP package versions (`pkg@x.y.z`). Third-party skills require `THIRD_PARTY/<source>/{LICENSE,SOURCE}` records.

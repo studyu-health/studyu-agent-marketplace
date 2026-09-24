@@ -5,7 +5,7 @@ description: 'Rewrite text agents consume — commits, PR bodies, review comment
 
 # Simplified Technical English
 
-This skill adapts the MIT-licensed `danyuchn/asd-ste100-skill` for concise, unambiguous technical communication. It applies ASD-STE100 principles but does not include the official ASD dictionary and cannot certify formal ASD-STE100 compliance. See `LICENSE` for attribution.
+This skill adapts the MIT-licensed `danyuchn/asd-ste100-skill` for concise, unambiguous technical communication. It applies ASD-STE100 principles but does not include the official ASD dictionary and cannot certify formal ASD-STE100 compliance. See `THIRD_PARTY/asd-ste100-skill/LICENSE` for attribution.
 
 ## Modes
 

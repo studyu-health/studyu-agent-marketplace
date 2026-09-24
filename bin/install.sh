@@ -55,29 +55,23 @@ install_mcp() {
     fi
     files+=("$root/mcps/$name/.mcp.json")
   done
-  local selection
-  selection=$(mktemp)
-  jq -s 'reduce .[] as $f ({}; . * $f)' "${files[@]}" > "$selection"
   local added=() present=()
+  local tmp
+  tmp=$(mktemp .mcp.json.XXXXXX)
   if [ ! -f .mcp.json ]; then
-    cp "$selection" .mcp.json
+    jq -s 'reduce .[] as $f ({}; . * $f)' "${files[@]}" > "$tmp"
     added=("${names[@]}")
   else
     if ! jq -e . .mcp.json >/dev/null 2>&1; then
-      rm -f "$selection"
       echo ".mcp.json is not valid JSON; not changed." >&2
       return 1
     fi
     for name in "${names[@]}"; do
       if jq -e --arg name "$name" '.mcpServers[$name] != null' .mcp.json >/dev/null; then present+=("$name"); else added+=("$name"); fi
     done
-    local tmp
-    tmp=$(mktemp .mcp.json.XXXXXX)
-    jq -s --slurpfile sel "$selection" '.[0] * {mcpServers: ($sel[0].mcpServers + (.[0].mcpServers // {}))}' .mcp.json > "$tmp"
-    mv "$tmp" .mcp.json
+    jq -s '.[0] as $old | (.[1:] | reduce .[] as $f ({}; . * $f)) as $sel | $old * {mcpServers: ($sel.mcpServers + ($old.mcpServers // {}))}' .mcp.json "${files[@]}" > "$tmp"
   fi
-  rm -f "$selection"
-  [ "${#added[@]}" -eq 0 ] || echo "added: ${added[*]}"
+  mv "$tmp" .mcp.json
   [ "${#present[@]}" -eq 0 ] || echo "already present: ${present[*]}"
   echo "Claude Code, VS Code, and OMP read .mcp.json (Claude Code asks for approval on first use). Cursor: copy the entries to .cursor/mcp.json."
 }

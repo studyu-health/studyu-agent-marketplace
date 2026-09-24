@@ -8,7 +8,7 @@ for file in skills/*/SKILL.md; do
   [ -f "$file" ] || continue
   skills=$((skills + 1))
   dir=${file#skills/}; dir=${dir%/SKILL.md}
-  fm=$(awk 'NR == 1 && $0 == "---" { in_fm=1; next } in_fm && $0 == "---" { exit } in_fm { print }' "$file")
+  fm=$(awk 'NR == 1 && $0 == "---" { in_fm=1; next } in_fm && $0 == "---" { closed=1; exit } in_fm { print } END { if (!closed) exit 1 }' "$file") || { echo "$file: missing frontmatter" >&2; failed=1; continue; }
   if [ -z "$fm" ]; then echo "$file: missing frontmatter" >&2; failed=1; continue; fi
   name=$(printf '%s\n' "$fm" | awk -F: '$1 == "name" { sub(/^[[:space:]]*/, "", $2); print $2; exit }')
   if [ "$name" != "$dir" ] || [ "${#name}" -gt 64 ] || ! [[ "$name" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then echo "$file: invalid name" >&2; failed=1; fi

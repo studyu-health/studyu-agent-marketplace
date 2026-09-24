@@ -86,10 +86,10 @@ case "$mode" in
   skills) install_skills ;;
   mcp) install_mcp "$@" ;;
   all)
-    install_skills
     names=$(jq -r '.mcpServers | keys | join(",")' "$root/.mcp.example.json")
     printf 'Enable StudyU MCP servers (%s) in .mcp.json? [y/N] ' "$names"
     read -r ans || ans=""
+    install_skills
     case "$ans" in
       [yY]*) install_mcp || echo "Warning: MCP servers not configured." >&2 ;;
       *) echo "Skipped MCP servers. Enable later: bash $root/bin/install.sh mcp $target" ;;

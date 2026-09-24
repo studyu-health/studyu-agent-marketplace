@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sonarqube": {
+      "type": "stdio",
+      "command": "sonar",
+      "args": ["run", "mcp"]
+    }
+  }
+}

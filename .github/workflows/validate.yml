@@ -16,6 +16,14 @@ jobs:
         with:
           node-version: 22
       - run: bash scripts/validate.sh
+      - name: Smoke-test installer
+        shell: bash
+        run: |
+          t=$(mktemp -d)
+          bash bin/install.sh mcp "$t"
+          jq -e '.mcpServers | keys == ["dart","sonarqube"]' "$t/.mcp.json"
+          bash bin/install.sh mcp "$t" dart | grep -q 'already present: dart'
+          ! bash bin/install.sh mcp "$t" nope
       - name: Verify skills CLI discovery
         shell: bash
         run: |

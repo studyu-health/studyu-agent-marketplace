@@ -27,11 +27,16 @@ jobs:
           apm pack --offline
           git diff --exit-code -- .claude-plugin/marketplace.json .agents/plugins/marketplace.json
       - name: Verify release packaging
-        uses: microsoft/apm-action@v1
-        with:
-          mode: release
-          release-skip-publish: "true"
-          apm-version: "0.31.0"
+        run: |
+          set -euo pipefail
+          apm pack --check-versions --check-clean --dry-run
+          for package in plugins/*/; do
+            (
+              cd "$package"
+              apm pack --offline --archive --archive-format tar.gz -o "$GITHUB_WORKSPACE/dist"
+            )
+          done
+          test "$(find dist -name '*.tar.gz' -type f | wc -l)" -eq 3
       - name: Smoke-test direct APM installs
         shell: bash
         run: |

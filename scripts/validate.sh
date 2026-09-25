@@ -22,6 +22,7 @@ for file in skills/*/SKILL.md; do
 done
 
 command -v python3 >/dev/null 2>&1 || { echo "python3 is required to validate mcps/*/apm.yml" >&2; exit 1; }
+python3 -c 'import yaml' >/dev/null 2>&1 || { echo "PyYAML is required: pip install pyyaml" >&2; exit 1; }
 for file in mcps/*/apm.yml; do
   [ -f "$file" ] || continue
   mcps=$((mcps + 1))

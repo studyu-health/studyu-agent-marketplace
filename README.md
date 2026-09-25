@@ -22,8 +22,8 @@ version: 1.0.0
 targets: [claude, opencode, copilot, codex, cursor]
 dependencies:
   apm:
-    - studyu-health/studyu-agent-marketplace#v0.1.0
-    - studyu-health/studyu-agent-marketplace/mcps/dart#v0.1.0
+    - studyu-health/studyu-agent-marketplace
+    - studyu-health/studyu-agent-marketplace/mcps/dart
 ```
 
 Then run:
@@ -76,7 +76,7 @@ Use this only when a target agent has no APM support. APM is the supported path 
 `sonarqube` needs a per-developer login, so it is not listed in any repository's `apm.yml`. Each developer who wants it installs it into their own user-level agent configs:
 
 ```bash
-apm install -g studyu-health/studyu-agent-marketplace/mcps/sonarqube#v0.1.0 --target claude,codex,copilot
+apm install -g studyu-health/studyu-agent-marketplace/mcps/sonarqube --target claude,codex,copilot
 ```
 
 This writes to `~/.claude.json`, `~/.codex/config.toml`, and `~/.copilot/mcp-config.json` (OMP reads the Claude Code file too). OpenCode and Cursor only read MCP config from the project, so `sonarqube` will not appear there from a global install; add it to a project's `apm.yml` instead if a whole team needs it there.

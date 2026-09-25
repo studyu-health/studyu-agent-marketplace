@@ -1,5 +1,7 @@
 # StudyU Agent Marketplace
 
+![StudyU Bazaar: Nofi, the StudyU mascot, wearing a fez and holding a lantern in an ornate Istanbul-style bazaar, under a "StudyU Bazaar" sign with the Hagia Sophia in the background](docs/images/studyu-bazaar-hero.jpg)
+
 Shared StudyU agent skills and MCP servers, installed with [APM](https://github.com/microsoft/apm) into any harness it supports: Claude Code, OpenCode, GitHub Copilot, Codex, Cursor, and more. OMP and Pi pick up the same files because they read Claude Code's and the portable `.mcp.json` config; Pi needs [`pi-mcp-adapter`](https://github.com/nicobailon/pi-mcp-adapter) installed once (`pi install npm:pi-mcp-adapter`).
 
 ## Install APM

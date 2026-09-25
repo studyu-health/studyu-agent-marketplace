@@ -1,0 +1,10 @@
+name: sonarqube
+version: 0.1.0
+description: SonarQube MCP server (opt-in; run `apm install -g` to add it to your own agents)
+dependencies:
+  mcp:
+    - name: sonarqube
+      registry: false
+      transport: stdio
+      command: sonar
+      args: ["run", "mcp"]

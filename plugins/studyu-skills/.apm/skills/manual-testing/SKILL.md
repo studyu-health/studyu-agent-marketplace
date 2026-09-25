@@ -1,6 +1,6 @@
 ---
 name: manual-testing
-description: Produce a prioritized manual QA checklist from a code change (PR, branch, or commit range) in the StudyU Flutter monorepo. Reads the change diff, fetches the linked Jira ticket when access exists, works out the scope of the PR, maps changed code to existing automated tests, and writes step-by-step functional, UI, and UX test guidance as a checkbox Markdown checklist for the participant app and the designer, then copies it to the clipboard. Use whenever the user asks what QA should test, asks for a manual test plan or test checklist, says "/manual-testing", or wants to verify a PR behaves correctly before merge — even if they never say "QA".
+description: Use when a user asks what QA should test, needs a manual test plan or checklist, says "/manual-testing", or wants to verify a PR before merge. Produces a prioritized functional, UI, and UX checklist from a StudyU Flutter change and its automated-test coverage.
 argument-hint: "[pr-number | branch | commit-range]"
 ---
 

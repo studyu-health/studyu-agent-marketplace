@@ -1,0 +1,33 @@
+name: studyu-agent-marketplace
+version: 0.1.0
+description: StudyU developer resources for agent harnesses
+author: StudyU
+license: MIT
+homepage: https://github.com/studyu-health/studyu-agent-marketplace
+repository: https://github.com/studyu-health/studyu-agent-marketplace
+keywords: [studyu, skills, mcp, agents]
+includes: auto
+marketplace:
+  owner:
+    name: StudyU
+    url: https://github.com/studyu-health/studyu-agent-marketplace
+  outputs:
+    claude: {}
+    codex: {}
+  build:
+    tagPattern: "v{version}"
+  versioning:
+    strategy: lockstep
+  packages:
+    - name: studyu-skills
+      source: ./plugins/studyu-skills
+      category: Productivity
+      description: StudyU development skills for agent harnesses
+    - name: dart
+      source: ./plugins/dart
+      category: Productivity
+      description: Dart and Flutter MCP server via FVM
+    - name: sonarqube
+      source: ./plugins/sonarqube
+      category: Productivity
+      description: SonarQube MCP server for opted-in developers

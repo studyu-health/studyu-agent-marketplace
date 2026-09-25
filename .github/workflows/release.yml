@@ -1,0 +1,25 @@
+name: release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: microsoft/apm-action@v1
+        with:
+          mode: release
+          apm-version: "0.31.0"
+          release-tag: ${{ github.ref_name }}
+          release-name: StudyU Agent Marketplace ${{ github.ref_name }}
+          release-prerelease: auto
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

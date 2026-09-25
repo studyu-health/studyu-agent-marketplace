@@ -1,0 +1,9 @@
+name: studyu-skills
+version: 0.1.0
+description: StudyU development skills for agent harnesses
+author: StudyU
+license: MIT
+includes: auto
+dependencies:
+  apm: []
+  mcp: []

@@ -1,0 +1,44 @@
+{
+  "name": "studyu-agent-marketplace",
+  "interface": {
+    "displayName": "studyu-agent-marketplace"
+  },
+  "plugins": [
+    {
+      "name": "studyu-skills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/studyu-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "dart",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dart"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "sonarqube",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sonarqube"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: pull-request
-description: Standardize pull request creation. Validates branch name and commits against Conventional Commits spec, audits diff size (flag if >500 lines excluding generated files), proposes split if too large, then creates a PR with structured description (problem, changes, testing checklist). Triggers when user says "create PR", "open a pull request", "make a PR", "/pull-request", or asks to submit work for review.
+description: Use when creating or submitting a pull request for review. Validates the branch and Conventional Commits, audits diff size, proposes a split when needed, and creates a structured PR. Triggers: "create PR", "open a pull request", "make a PR", or "/pull-request".
 argument-hint: "[target-branch]"
 ---
 

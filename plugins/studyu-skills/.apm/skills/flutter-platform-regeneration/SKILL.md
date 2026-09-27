@@ -1,6 +1,6 @@
 ---
 name: flutter-platform-regeneration
-description: Regenerate StudyU's existing Flutter Android and iOS project files after Flutter migration evidence or an explicit user request, with approval, inventory, reversible worktree, diff, and native handoff gates.
+description: Use when regenerating StudyU's existing Flutter Android and iOS project files after Flutter migration evidence or an explicit user request, with approval, inventory, reversible worktree, diff, and native handoff gates.
 argument-hint: "[commit-or-branch]"
 ---
 

@@ -1,0 +1,9 @@
+name: replace-with-package-name
+version: 0.1.0
+description: Replace with a concise package description
+author: StudyU
+license: MIT
+includes: auto
+dependencies:
+  apm: []
+  mcp: []

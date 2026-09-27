@@ -1,0 +1,14 @@
+name: dart
+version: 0.1.0
+description: Dart and Flutter MCP server via FVM
+author: StudyU
+license: MIT
+includes: auto
+dependencies:
+  apm: []
+  mcp:
+    - name: dart
+      registry: false
+      transport: stdio
+      command: fvm
+      args: ["dart", "mcp-server"]

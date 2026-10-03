@@ -30,11 +30,13 @@ dependencies:
   apm:
     - name: studyu-skills
       marketplace: studyu-agent-marketplace
-      version: ^0.1.0
+      version: v0.1.0
     - name: dart
       marketplace: studyu-agent-marketplace
-      version: ^0.1.0
+      version: v0.1.0
 ```
+
+All packages release together under one repository tag, `v<version>`. Use the exact tag, for example `v0.1.0`. Do not use a range such as `^0.1.0`. For packages in this repository, APM resolves a range to a `<name>--v<version>` tag. This marketplace does not publish these tags.
 
 Install the declared packages:
 
@@ -44,8 +46,7 @@ apm install
 
 Commit `apm.yml`, `apm.lock.yaml`, and the generated harness configuration. Do not commit `apm_modules/`.
 
-After the first release tag exists, use direct, tag-pinned dependencies instead
-of the catalog when a project needs an exact source ref:
+Direct dependencies do not need the marketplace registration:
 
 ```yaml
 dependencies:

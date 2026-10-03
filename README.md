@@ -20,33 +20,22 @@ Add the marketplace once:
 apm marketplace add studyu-health/studyu-agent-marketplace
 ```
 
-Add packages to a repository's `apm.yml`:
+Set the harnesses in the repository's `apm.yml`:
 
 ```yaml
 name: your-project
 version: 1.0.0
 targets: [claude, copilot, cursor, codex, gemini, grok-build, opencode, windsurf, kiro, antigravity, hermes, agent-skills]
-dependencies:
-  apm:
-    - name: studyu-skills
-      marketplace: studyu-agent-marketplace
-      version: v0.1.0
-    - name: dart
-      marketplace: studyu-agent-marketplace
-      version: v0.1.0
 ```
 
-All packages release together under one repository tag, `v<version>`. Use the exact tag, for example `v0.1.0`. Do not use a range such as `^0.1.0`. For packages in this repository, APM resolves a range to a `<name>--v<version>` tag. This marketplace does not publish these tags.
-
-Install the declared packages:
+Install packages at a release tag:
 
 ```bash
-apm install
+apm install studyu-skills@studyu-agent-marketplace#v0.1.0
+apm install dart@studyu-agent-marketplace#v0.1.0
 ```
 
-Commit `apm.yml`, `apm.lock.yaml`, and the generated harness configuration. Do not commit `apm_modules/`.
-
-Direct dependencies do not need the marketplace registration:
+APM adds the pinned packages to `apm.yml`:
 
 ```yaml
 dependencies:
@@ -54,6 +43,10 @@ dependencies:
     - studyu-health/studyu-agent-marketplace/plugins/studyu-skills#v0.1.0
     - studyu-health/studyu-agent-marketplace/plugins/dart#v0.1.0
 ```
+
+All packages release together under one repository tag, `v<version>`. Pin that tag. Version ranges such as `^0.1.0` do not resolve for this marketplace.
+
+Commit `apm.yml`, `apm.lock.yaml`, and the generated harness configuration. Do not commit `apm_modules/`. After a clone, run `apm install` to restore the packages. Run `apm audit --ci` in CI to detect drift.
 
 ## Harnesses
 

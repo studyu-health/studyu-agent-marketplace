@@ -31,8 +31,8 @@ targets: [claude, copilot, cursor, codex, gemini, grok-build, opencode, windsurf
 Install packages at a release tag:
 
 ```bash
-apm install studyu-skills@studyu-agent-marketplace#v0.1.0
-apm install dart@studyu-agent-marketplace#v0.1.0
+apm install studyu-skills@studyu-agent-marketplace#v0.1.1
+apm install dart@studyu-agent-marketplace#v0.1.1
 ```
 
 APM adds the pinned packages to `apm.yml`:
@@ -40,8 +40,8 @@ APM adds the pinned packages to `apm.yml`:
 ```yaml
 dependencies:
   apm:
-    - studyu-health/studyu-agent-marketplace/plugins/studyu-skills#v0.1.0
-    - studyu-health/studyu-agent-marketplace/plugins/dart#v0.1.0
+    - studyu-health/studyu-agent-marketplace/plugins/studyu-skills#v0.1.1
+    - studyu-health/studyu-agent-marketplace/plugins/dart#v0.1.1
 ```
 
 All packages release together under one repository tag, `v<version>`. Pin that tag. Version ranges such as `^0.1.0` do not resolve for this marketplace.
@@ -83,7 +83,7 @@ pi install npm:pi-mcp-adapter
 Install SonarQube for a developer's supported global harnesses:
 
 ```bash
-apm install -g sonarqube@studyu-agent-marketplace --target claude,codex,copilot
+apm install -g sonarqube@studyu-agent-marketplace#v0.1.1 --target claude,codex,copilot
 ```
 
 OpenCode and Cursor use project MCP configuration. Add `sonarqube` to that project's `apm.yml` when a team needs it.

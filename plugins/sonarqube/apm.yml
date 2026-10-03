@@ -1,5 +1,5 @@
 name: sonarqube
-version: 0.1.0
+version: 0.1.1
 description: SonarQube MCP server (opt-in; run `apm install -g` to add it to your own agents)
 author: StudyU
 license: MIT

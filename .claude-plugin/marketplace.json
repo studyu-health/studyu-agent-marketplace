@@ -8,21 +8,21 @@
     {
       "name": "studyu-skills",
       "description": "StudyU development skills for agent harnesses",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "Productivity",
       "source": "./plugins/studyu-skills"
     },
     {
       "name": "dart",
       "description": "Dart and Flutter MCP server via FVM",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "Productivity",
       "source": "./plugins/dart"
     },
     {
       "name": "sonarqube",
       "description": "SonarQube MCP server for opted-in developers",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "Productivity",
       "source": "./plugins/sonarqube"
     }
